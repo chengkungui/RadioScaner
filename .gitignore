@@ -1,0 +1,5 @@
+﻿RadioScanner/bin/
+RadioScanner/obj/
+*.pubxml
+*.user
+RadioScanner/wwwroot/lib/

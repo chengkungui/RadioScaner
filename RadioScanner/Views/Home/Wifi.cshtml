@@ -1,0 +1,28 @@
+﻿@model IEnumerable<WifiRead>
+@{
+    ViewData["Title"] = "Wifi Reads";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Wifi Reads</h1>
+</div>
+<table class="table">
+    <tr>
+        <th>Time</th>
+        <th>MAC</th>
+        <th>Stength</th>
+        <th>Vendor</th>
+        <th>Type</th>
+    </tr>
+    @foreach (var read in Model)
+    {
+        var localTime = TimeZoneInfo.ConvertTime(read.Time.UtcDateTime, TimeZoneInfo.FindSystemTimeZoneById("AUS Eastern Standard Time")).ToString(System.Globalization.CultureInfo.GetCultureInfo("en-AU"));
+        <tr>
+            <td>@Html.DisplayTextFor(modelItem => localTime)</td>
+            <td>@Html.DisplayTextFor(modelItem => read.MACAddress)</td>
+            <td>@Html.DisplayTextFor(modelItem => read.SignalStrength)</td>
+            <td>@Html.DisplayTextFor(modelItem => read.Vendor)</td>
+            <td>@Html.DisplayTextFor(modelItem => read.Type)</td>
+        </tr>
+    }
+</table>
